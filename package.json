@@ -7,7 +7,7 @@
   "engines": {
     "node": ">=22.9"
   },
-  "description": "Website mockups for hot leads — one folder per lead, standardized build/dev/deploy across all sites.",
+  "description": "Website mockups organised by company, with one build, preview, and deploy workflow.",
   "scripts": {
     "sites": "node tools/site.mjs list",
     "dev": "node tools/site.mjs dev",

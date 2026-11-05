@@ -1,4 +1,4 @@
-# New Orleans Grill — reference template for the `restaurant` archetype
+# New Orleans Grill
 
 **Concept: "Roux &amp; Rivet."** Deep roux-brown and cast-iron color palette,
 copper rivet accents, and French Quarter wrought-iron scrollwork as section
@@ -32,7 +32,7 @@ verified to belong to this restaurant):
 
 ## Grounded facts used (sources)
 
-From `data/leads.json` (`restaurant` archetype, `new-orleans-grill` lead):
+From `data/leads.json` (New Orleans Grill):
 - Business name: New Orleans Grill
 - Phone: (601) 924-7305
 - Owner / contact email: Billy Causey, billycausey@aol.com
@@ -78,13 +78,12 @@ site. The signature-dish description (Red Fish Pontchartrain) is a factual
 description of the classic preparation the dish name refers to, not a claim
 about this kitchen's specific recipe or process.
 
-**Flagship swap note:** the `restaurant` archetype's originally-planned
-flagship lead, Cafe Azteca (Brandon, MS), was dropped after research turned
-up strong signals it has permanently closed (Yelp listing marked "CLOSED";
-a local Facebook community post describes the sign down and a paper
-"Closed" notice in the window for 2+ months). New Orleans Grill was
-substituted as flagship — active, still receiving recent reviews as of
-June 2026.
+**Why this restaurant:** Cafe Azteca (Brandon, MS) was the first one considered
+for this mockup, and was dropped after research turned up strong signals it
+has permanently closed (Yelp listing marked "CLOSED"; a local Facebook
+community post describes the sign down and a paper "Closed" notice in the
+window for 2+ months). New Orleans Grill is active and was still receiving
+recent reviews as of June 2026.
 
 ## Local preview and deployment
 

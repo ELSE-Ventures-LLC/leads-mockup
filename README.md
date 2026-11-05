@@ -12,40 +12,43 @@ previewed, and deployed. Do not infer a site's architecture from whether it has 
 
 ```text
 data/
-  leads.json              Lead facts and archetype status
+  leads.json              Generated export of leads and prospects
   source/                 Original lead spreadsheet
 sites/
-  <category>/<site>/      One independently designed mockup
+  <company>/<site>/       One company's mockup (several, if it has design options)
 tools/
   sites.registry.mjs      Explicit inventory and commands for all sites
   site.mjs                Unified build, preview, and deployment CLI
 ```
 
+`<company>` is a slug of the company's name in the admin app (`public.customers`):
+lower case, `&` written as `and`, punctuation removed. Site folder names are the
+deploy slugs and stay as they are when a company has more than one design.
+
+`data/leads.json` is generated from that table (leads and prospects only) by
+`npm run export:leads` in the ak-os repo. Do not edit it by hand. Companies at
+other stages can still have sites here; they are just not rows in that file.
+
 ## Current inventory
 
-| Category | Site | Type |
+| Company | Site | Type |
 |---|---|---|
-| adcamp | `adcamp-inc-first-design` | Generated Vite SPA snapshot |
-| adcamp | `adcamp-webdesign-1` | Vite SPA |
-| adcamp | `adcamp-webdesign-3-decent` | Vite SPA |
-| agentconsulting | `agentconsulting` | Generated Vite SPA snapshot |
-| brandoncomer | `editorial-authority` | Static |
-| brandoncomer | `typographic-minimal` | Static |
-| construction | `midstate-construction` | Generated static |
-| home-services | `buford-plumbing` | Static |
-| newcrestimage | `newcrestimage-2` | TanStack Start Worker |
-| newcrestimage | `newcrestimage-mockup` | TanStack Start Worker |
-| outdoor-services | `complete-lawn-service-ms` | Static |
-| personal-brand | `maxlittlejohn` | Generated Vite SPA snapshot |
-| restaurant | `new-orleans-grill` | Static |
-| waste-management | `customcarting` | TanStack Start Worker |
+| Adcamp Inc. | `adcamp-inc-first-design` | Generated Vite SPA snapshot |
+| Adcamp Inc. | `adcamp-webdesign-1` | Vite SPA |
+| Adcamp Inc. | `adcamp-webdesign-3-decent` | Vite SPA |
+| Agent Consulting | `agentconsulting` | Generated Vite SPA snapshot |
+| Brandon Comer | `editorial-authority` | Static |
+| Brandon Comer | `typographic-minimal` | Static |
+| Mid State Construction | `midstate-construction` | Generated static |
+| Buford Plumbing Company, Inc. | `buford-plumbing` | Static |
+| Newcrest Image | `newcrestimage-2` | TanStack Start Worker |
+| Newcrest Image | `newcrestimage-mockup` | TanStack Start Worker |
+| Complete Lawn Service MS LLC | `complete-lawn-service-ms` | Static |
+| Max Littlejohn | `maxlittlejohn` | Generated Vite SPA snapshot |
+| New Orleans Grill | `new-orleans-grill` | Static |
+| Custom Carting | `customcarting` | TanStack Start Worker |
 
 Run `npm run sites` for the authoritative, registry-generated list.
-
-The lead archetype reference sites tracked in `data/leads.json` are
-`buford-plumbing`, `midstate-construction`, `complete-lawn-service-ms`, and
-`new-orleans-grill`. The other directories are standalone concepts or design
-alternatives and are intentionally kept in the same operational registry.
 
 ## Requirements
 
@@ -101,24 +104,23 @@ states. A real submission backend is outside this repository's scope.
 
 ## Adding a site
 
-1. Create `sites/<category>/<slug>/` and document the design and grounded facts in
-   that site's README.
+1. Create `sites/<company>/<slug>/`, using the company slug from the admin app,
+   and document the design and grounded facts in that site's README.
 2. Add an explicit entry to `tools/sites.registry.mjs`, including its type,
    deterministic install command, build command, output, dev mode, and deployment
    configuration.
 3. Keep Cloudflare's `compatibility_date` current. Static sites should use a
    `wrangler.jsonc`; framework builds may generate the deployable config.
 4. Run `npm run check`, build the new slug, and run its deployment dry run.
-5. Update this inventory and `data/leads.json` when the project represents a lead
-   archetype rather than a standalone concept.
+5. Refresh `data/leads.json` from ak-os (`npm run export:leads`) when the company
+   is a lead or prospect, and update this inventory.
 
 ## Design ground rules
 
-- Use grounded lead facts; do not fabricate reviews, ratings, awards,
-  certifications, dates, or business claims.
-- Give each new archetype an independent visual system. A per-lead mockup may
-  re-skin its own archetype's reference design without borrowing from unrelated
-  categories.
+- Use grounded lead facts from `data/leads.json`; do not fabricate reviews,
+  ratings, awards, certifications, dates, or business claims.
+- Each company's site is its own design. Do not reuse another company's visual
+  system.
 - Preserve a clear source/build boundary. Generated output must be reproducible
   from committed source and a locked dependency graph.
 - Optimize large images and keep essential branding/social assets under project

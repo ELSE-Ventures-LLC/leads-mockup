@@ -8,7 +8,7 @@ reliable, and experienced positioning per the original brief.
 
 ## Structure — why this site differs from the vanilla-HTML ones
 
-Like `sites/adcamp/adcamp-inc-first-design/`, this is a full Vite + React +
+Like `sites/adcamp-inc/adcamp-inc-first-design/`, this is a full Vite + React +
 TypeScript + Tailwind + shadcn/ui app, vendored **as-is** under `app/`:
 
 ```

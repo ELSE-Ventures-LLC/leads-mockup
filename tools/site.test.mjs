@@ -42,11 +42,11 @@ test('isWithinRoot rejects sibling paths and symlink targets can be detected can
 test('findUnregisteredSiteDirs checks repository contents instead of a fixed site count', () => {
   const base = mkdtempSync(join(tmpdir(), 'site-registry-test-'));
   try {
-    mkdirSync(join(base, 'sites', 'category', 'registered'), { recursive: true });
-    mkdirSync(join(base, 'sites', 'category', 'new-site'));
+    mkdirSync(join(base, 'sites', 'adcamp-inc', 'registered'), { recursive: true });
+    mkdirSync(join(base, 'sites', 'adcamp-inc', 'new-site'));
     mkdirSync(join(base, 'sites', '.ignored', 'not-a-site'), { recursive: true });
-    const registered = [{ dir: 'sites/category/registered' }];
-    assert.deepEqual(findUnregisteredSiteDirs(registered, base), ['sites/category/new-site']);
+    const registered = [{ dir: 'sites/adcamp-inc/registered' }];
+    assert.deepEqual(findUnregisteredSiteDirs(registered, base), ['sites/adcamp-inc/new-site']);
   } finally {
     rmSync(base, { recursive: true, force: true });
   }

@@ -1,13 +1,13 @@
-# AdCamp Inc. — first design (repurposed as a reusable design option)
+# AdCamp Inc. — first design
 
 ## Origin
 
 Built as a client pitch for **AdCamp Inc.**, a paving company in Flowood,
 Mississippi (source: [`ELSE-Ventures-LLC/adcamp-inc-first-design`](https://github.com/ELSE-Ventures-LLC/adcamp-inc-first-design)).
 The client didn't move forward with it. Rather than shelve the work, it's
-vendored here as a standalone design option that can be re-skinned for other
-clients — same role as an archetype reference template elsewhere in this repo,
-just not derived from a `data/leads.json` entry.
+kept here as one of Adcamp Inc.'s design options. It is not a row in
+`data/leads.json`, because that file is only leads and prospects and Adcamp
+Inc. is a client.
 
 ## Design system
 
@@ -39,9 +39,9 @@ npm run deploy:check -- adcamp-inc-first-design
 npm run deploy -- adcamp-inc-first-design
 ```
 
-## Re-skinning this for another client
+## Copying the design
 
-Treat `app/src` as the design system to inherit: copy this directory to a new
-`sites/adcamp/<new-slug>/`, update `wrangler.jsonc`'s `"name"`, and re-skin
-copy/branding/imagery in `app/src/pages` and `app/src/components` — the shadcn
-component layer, layout, and motion should stay intact.
+This design belongs to Adcamp Inc. Another company gets its own
+`sites/<company>/<slug>/` folder. Starting from this code means copying the
+directory there, updating `wrangler.jsonc`'s `"name"`, and replacing the copy,
+branding, and imagery in `app/src/pages` and `app/src/components`.

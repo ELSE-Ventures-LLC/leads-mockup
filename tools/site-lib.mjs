@@ -45,7 +45,7 @@ export function validateRegistry(sites, repo) {
   for (const site of sites) {
     if (slugs.has(site.slug)) errors.push(`duplicate slug: ${site.slug}`);
     slugs.add(site.slug);
-    if (!site.slug || !site.category || !site.kind || !site.dir) {
+    if (!site.slug || !site.company || !site.kind || !site.dir) {
       errors.push(`incomplete registry entry: ${JSON.stringify(site)}`);
       continue;
     }
@@ -72,12 +72,12 @@ export function findUnregisteredSiteDirs(sites, repo) {
   const registeredDirs = new Set(sites.map((site) => site.dir));
   const sitesRoot = resolve(repo, 'sites');
   const unregistered = [];
-  for (const category of readdirSync(sitesRoot, { withFileTypes: true })) {
-    if (!category.isDirectory() || category.name.startsWith('.')) continue;
-    const categoryDir = resolve(sitesRoot, category.name);
-    for (const candidate of readdirSync(categoryDir, { withFileTypes: true })) {
+  for (const company of readdirSync(sitesRoot, { withFileTypes: true })) {
+    if (!company.isDirectory() || company.name.startsWith('.')) continue;
+    const companyDir = resolve(sitesRoot, company.name);
+    for (const candidate of readdirSync(companyDir, { withFileTypes: true })) {
       if (!candidate.isDirectory() || candidate.name.startsWith('.')) continue;
-      const relativeDir = `sites/${category.name}/${candidate.name}`;
+      const relativeDir = `sites/${company.name}/${candidate.name}`;
       if (!registeredDirs.has(relativeDir)) unregistered.push(relativeDir);
     }
   }

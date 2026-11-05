@@ -1,4 +1,4 @@
-# Complete Lawn Service MS — Website Mockup (outdoor-services reference template)
+# Complete Lawn Service MS — Website Mockup
 
 **Lead:** Complete Lawn Service MS LLC · Lawn Care Service · Jackson, MS
 **Score:** HOT (9) — outdated non-mobile site, no SSL, no contact form, socials inactive, 0 Google reviews, no ads

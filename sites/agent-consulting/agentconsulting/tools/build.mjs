@@ -1,7 +1,7 @@
 /**
  * build.mjs — installs deps and runs the Vite build for the vendored
  * `app/` React project, then syncs its dist/ output into ../public/.
- * Usage: node tools/build.mjs   (from sites/agentconsulting/agentconsulting/)
+ * Usage: node tools/build.mjs   (from sites/agent-consulting/agentconsulting/)
  */
 import { existsSync, rmSync, mkdirSync, cpSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
