@@ -1,7 +1,7 @@
 /**
  * build.mjs — installs deps and runs the Vite build for the vendored
  * `app/` React project, then syncs its dist/ output into ../public/.
- * Usage: node tools/build.mjs   (from sites/adcamp/adcamp-inc-first-design/)
+ * Usage: node tools/build.mjs   (from sites/adcamp-inc/adcamp-inc-first-design/)
  */
 import { existsSync, rmSync, mkdirSync, cpSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';

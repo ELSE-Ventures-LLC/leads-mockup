@@ -1,6 +1,6 @@
-# Max Littlejohn — personal-brand mockup
+# Max Littlejohn
 
-A Vite, React, and TypeScript personal-brand concept. Source lives in this
+A Vite, React, and TypeScript personal site. Source lives in this
 directory; `tools/build.mjs` produces the committed `public/` snapshot used by
 the Cloudflare Worker.
 

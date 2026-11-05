@@ -217,7 +217,7 @@ async function pickSites() {
       if (!first) process.stdout.write(`\x1b[${lines}A\x1b[0J`);
       const rows = ['', '  Select sites (↑↓ move · Space toggle · a all/none · Enter start)', ''];
       sites.forEach((site, index) => rows.push(
-        `  ${cursor === index ? '›' : ' '} ${selected.has(index) ? '\x1b[32m◉\x1b[0m' : '\x1b[2m◯\x1b[0m'}  ${site.slug.padEnd(28)} \x1b[2m${site.category}\x1b[0m`
+        `  ${cursor === index ? '›' : ' '} ${selected.has(index) ? '\x1b[32m◉\x1b[0m' : '\x1b[2m◯\x1b[0m'}  ${site.slug.padEnd(28)} \x1b[2m${site.company}\x1b[0m`
       ));
       rows.push('', `  ${selected.size || 'All'} site${selected.size === 1 ? '' : 's'} selected`, '');
       process.stdout.write(rows.join('\n') + '\n');
@@ -271,7 +271,7 @@ function checkGeneratedOutput() {
 
 function list() {
   console.log('\nSites:\n');
-  for (const site of sites) console.log(`  ${site.slug.padEnd(28)} ${site.category.padEnd(18)} [${site.kind}]`);
+  for (const site of sites) console.log(`  ${site.slug.padEnd(28)} ${site.company.padEnd(30)} [${site.kind}]`);
   console.log('');
 }
 

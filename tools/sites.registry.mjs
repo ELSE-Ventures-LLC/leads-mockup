@@ -1,9 +1,10 @@
 /**
  * Explicit inventory for every deployable mockup in this repository.
  *
- * Paths are relative to the repository root. Keeping this data explicit avoids
- * guessing an application's architecture from incidental folders such as
- * `public/`.
+ * Paths are relative to the repository root. The parent directory is the
+ * company: a slug of its name in the admin app.
+ * Keeping this data explicit avoids guessing an application's architecture
+ * from incidental folders such as `public/`.
  */
 export const SITE_KINDS = new Set([
   'static',
@@ -13,46 +14,46 @@ export const SITE_KINDS = new Set([
 ]);
 
 export const sites = [
-  staticSite('adcamp-inc-first-design', 'adcamp', {
+  staticSite('adcamp-inc-first-design', 'adcamp-inc', {
     kind: 'generated-static',
-    build: nodeBuild('sites/adcamp/adcamp-inc-first-design'),
-    install: npmInstall('sites/adcamp/adcamp-inc-first-design/app'),
-    quality: npmQuality('sites/adcamp/adcamp-inc-first-design/app'),
+    build: nodeBuild('sites/adcamp-inc/adcamp-inc-first-design'),
+    install: npmInstall('sites/adcamp-inc/adcamp-inc-first-design/app'),
+    quality: npmQuality('sites/adcamp-inc/adcamp-inc-first-design/app'),
     trackedOutput: true,
   }),
-  viteSite('adcamp-webdesign-1', 'adcamp'),
-  viteSite('adcamp-webdesign-3-decent', 'adcamp'),
-  staticSite('agentconsulting', 'agentconsulting', {
+  viteSite('adcamp-webdesign-1', 'adcamp-inc'),
+  viteSite('adcamp-webdesign-3-decent', 'adcamp-inc'),
+  staticSite('agentconsulting', 'agent-consulting', {
     kind: 'generated-static',
-    build: nodeBuild('sites/agentconsulting/agentconsulting'),
-    install: npmInstall('sites/agentconsulting/agentconsulting/app'),
-    quality: npmQuality('sites/agentconsulting/agentconsulting/app'),
+    build: nodeBuild('sites/agent-consulting/agentconsulting'),
+    install: npmInstall('sites/agent-consulting/agentconsulting/app'),
+    quality: npmQuality('sites/agent-consulting/agentconsulting/app'),
     trackedOutput: true,
   }),
-  staticSite('editorial-authority', 'brandoncomer'),
-  staticSite('typographic-minimal', 'brandoncomer'),
-  staticSite('midstate-construction', 'construction', {
+  staticSite('editorial-authority', 'brandon-comer'),
+  staticSite('typographic-minimal', 'brandon-comer'),
+  staticSite('midstate-construction', 'mid-state-construction', {
     kind: 'generated-static',
-    build: nodeBuild('sites/construction/midstate-construction'),
+    build: nodeBuild('sites/mid-state-construction/midstate-construction'),
     trackedOutput: true,
   }),
-  staticSite('buford-plumbing', 'home-services'),
-  workerSite('newcrestimage-2', 'newcrestimage'),
-  workerSite('newcrestimage-mockup', 'newcrestimage'),
-  staticSite('complete-lawn-service-ms', 'outdoor-services'),
+  staticSite('buford-plumbing', 'buford-plumbing-company-inc'),
+  workerSite('newcrestimage-2', 'newcrest-image'),
+  workerSite('newcrestimage-mockup', 'newcrest-image'),
+  staticSite('complete-lawn-service-ms', 'complete-lawn-service-ms-llc'),
   {
-    ...viteSite('maxlittlejohn', 'personal-brand'),
+    ...viteSite('maxlittlejohn', 'max-littlejohn'),
     // This project's Worker config intentionally deploys the generated public/ snapshot.
-    build: nodeBuild('sites/personal-brand/maxlittlejohn'),
+    build: nodeBuild('sites/max-littlejohn/maxlittlejohn'),
     output: 'public',
     trackedOutput: true,
   },
-  staticSite('new-orleans-grill', 'restaurant'),
-  workerSite('customcarting', 'waste-management'),
+  staticSite('new-orleans-grill', 'new-orleans-grill'),
+  workerSite('customcarting', 'custom-carting'),
 ].sort((a, b) => a.slug.localeCompare(b.slug));
 
-function siteDir(category, slug) {
-  return `sites/${category}/${slug}`;
+function siteDir(company, slug) {
+  return `sites/${company}/${slug}`;
 }
 
 function command(cwd, executable, args) {
@@ -79,11 +80,11 @@ function nodeBuild(cwd) {
   return command(cwd, 'node', ['tools/build.mjs']);
 }
 
-function staticSite(slug, category, overrides = {}) {
-  const dir = siteDir(category, slug);
+function staticSite(slug, company, overrides = {}) {
+  const dir = siteDir(company, slug);
   return {
     slug,
-    category,
+    company,
     kind: 'static',
     dir,
     output: 'public',
@@ -95,11 +96,11 @@ function staticSite(slug, category, overrides = {}) {
   };
 }
 
-function viteSite(slug, category) {
-  const dir = siteDir(category, slug);
+function viteSite(slug, company) {
+  const dir = siteDir(company, slug);
   return {
     slug,
-    category,
+    company,
     kind: 'vite-spa',
     dir,
     output: 'dist',
@@ -111,11 +112,11 @@ function viteSite(slug, category) {
   };
 }
 
-function workerSite(slug, category, overrides = {}) {
-  const dir = siteDir(category, slug);
+function workerSite(slug, company, overrides = {}) {
+  const dir = siteDir(company, slug);
   return {
     slug,
-    category,
+    company,
     kind: 'tanstack-worker',
     dir,
     output: 'dist/server',
